@@ -1,0 +1,26 @@
+네이밍 자유, Vo, Entity, Dto 사용도 자유.
+주소값만 모두 통일.
+1 - Controller, Service
+1 - Mapper (interface, xml)
+1 - 테스트 및 감독
+
+/user
+(post) 회원가입
+(get) 로그인
+(patch) /pw 비밀번호 수정
+(patch) /pic 프로필 사진 수정
+(delete) 탈퇴
+
+/board
+(get) /maxpage?row=40 마지막 page값
+(get) ?page=1&row=40 리스트
+(get) /{iboard} 디테일 (댓글5, 댓글 maxpage값)
+(post) 글등록
+(put) 글수정
+(delete) 글삭제
+
+/board/cmt
+(post) 댓글 등록
+(get) /{iboard}?page=2 (갯수 5개씩)
+(put) 수정
+(delete) 삭제
