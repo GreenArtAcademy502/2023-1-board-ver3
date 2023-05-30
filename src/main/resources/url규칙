@@ -6,7 +6,7 @@
 
 /user
 (post) 회원가입
-(get) 로그인
+(post) /login 로그인
 (patch) /pw 비밀번호 수정
 (patch) /pic 프로필 사진 수정
 (delete) 탈퇴

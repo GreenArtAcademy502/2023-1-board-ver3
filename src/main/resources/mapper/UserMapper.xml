@@ -11,4 +11,16 @@
         , addr = #{addr}
     </insert>
 
+    <select id="selUserByUid" resultType="UserLoginVo">
+        SELECT iuser, uid, upw, nm, gender, addr, main_pic mainPic
+        FROM t_user
+        WHERE uid = #{uid}
+    </select>
+
+    <update id="updUserPw">
+        UPDATE t_user
+        SET upw = #{upw}
+        WHERE iuser = ${iuser}
+    </update>
+
 </mapper>
