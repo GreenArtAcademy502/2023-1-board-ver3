@@ -6,7 +6,7 @@
         INSERT INTO t_board
         SET title = #{title}
         , ctnt = #{ctnt}
-        , iuser = ${iuser}
+        , iuser = #{iuser}
     </insert>
 
     <select id="selBoard" resultType="BoardVo">
@@ -16,7 +16,7 @@
         INNER JOIN t_user B
         ON A.iuser = B.iuser
         ORDER BY iboard DESC
-        LIMIT ${startIdx}, ${row}
+        LIMIT #{startIdx}, #{row}
     </select>
 
     <select id="selBoardRowCount" resultType="int">
@@ -30,7 +30,13 @@
         FROM t_board A
         INNER JOIN t_user B
         ON A.iuser = B.iuser
-        WHERE A.iboard = ${iboard}
+        WHERE A.iboard = #{iboard}
     </select>
+
+    <delete id="delBoard">
+        DELETE FROM t_board
+        WHERE iboard = #{iboard}
+        AND iuser = #{iuser}
+    </delete>
 
 </mapper>
