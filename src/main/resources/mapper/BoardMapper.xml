@@ -11,7 +11,7 @@
 
     <select id="selBoard" resultType="BoardVo">
         SELECT A.iboard, A.title, A.created_at createdAt
-        , B.nm writer
+        , B.nm writer, B.main_pic writerMainPic
         FROM t_board A
         INNER JOIN t_user B
         ON A.iuser = B.iuser
@@ -22,6 +22,15 @@
     <select id="selBoardRowCount" resultType="int">
         SELECT COUNT(iboard)
         FROM t_board
+    </select>
+
+    <select id="selBoardDetail" resultType="BoardDetailVo">
+        SELECT A.iboard, A.title, A.ctnt, A.created_at createdAt
+        , B.nm writer, B.main_pic writerMainPic
+        FROM t_board A
+        INNER JOIN t_user B
+        ON A.iuser = B.iuser
+        WHERE A.iboard = ${iboard}
     </select>
 
 </mapper>
