@@ -20,6 +20,7 @@ public class BoardService {
     public int insBoard(BoardInsDto dto) {
         return mapper.insBoard(dto);
     }
+
     public List<BoardVo> selBoard(BoardSelDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);
@@ -27,6 +28,7 @@ public class BoardService {
     }
 
     public int selBoardMaxPage(int row) {
-        return mapper.selBoardMaxPage(row);
+        int count = mapper.selBoardRowCount(row);
+        return (int)Math.ceil((double)count / row);
     }
 }

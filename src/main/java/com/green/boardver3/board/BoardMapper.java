@@ -11,5 +11,5 @@ import java.util.List;
 public interface BoardMapper {
     int insBoard(BoardInsDto dto);
     List<BoardVo> selBoard(BoardSelDto dto);
-    int selBoardMaxPage(int row);
+    int selBoardRowCount(int row);
 }
