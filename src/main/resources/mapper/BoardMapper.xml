@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.boardver3.board.BoardMapper">
 
-    <insert id="insBoard">
+    <insert id="insBoard"
+            useGeneratedKeys="true"
+            keyProperty="iboard">
         INSERT INTO t_board
         SET title = #{title}
         , ctnt = #{ctnt}
@@ -32,6 +34,15 @@
         ON A.iuser = B.iuser
         WHERE A.iboard = #{iboard}
     </select>
+
+    <update id="updBoard">
+        UPDATE t_board
+        SET title = #{title}
+        , ctnt = #{ctnt}
+        , updated_at = current_timestamp()
+        WHERE iboard = #{iboard}
+        AND iuser = #{iuser}
+    </update>
 
     <delete id="delBoard">
         DELETE FROM t_board
