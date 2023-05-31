@@ -19,4 +19,9 @@
         LIMIT ${startIdx}, ${row}
     </select>
 
+    <select id="selBoardMaxPage" resultType="int">
+        SELECT CEIL(COUNT(iboard) / ${row})
+        FROM t_board
+    </select>
+
 </mapper>
