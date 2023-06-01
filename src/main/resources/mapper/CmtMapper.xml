@@ -11,5 +11,20 @@
         , ctnt = #{ctnt}
     </insert>
 
+    <select id="selBoardCmt">
+        SELECT A.iboard_cmt iboardCmt, A.iboard, A.iuser, A.ctnt, A.created_at createdAt
+             , B.nm writer, B.main_pic writerMainPic
+        FROM t_board_cmt A
+        INNER JOIN t_user B
+        ON A.iuser = B.iuser
+        WHERE A.iboard = #{iboard}
+        LIMIT #{startIdx}, #{row}
+    </select>
+
+    <delete id="delBoardCmt">
+        DELETE FROM t_board_cmt
+        WHERE iboard_cmt = #{iboardCmt}
+        AND iuser = #{iuser}
+    </delete>
 
 </mapper>

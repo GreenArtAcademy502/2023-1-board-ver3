@@ -20,7 +20,7 @@
 @ (delete) 글삭제 { iboard, iuser }
 
 /board/cmt
-(post) 댓글 등록
-(get) /{iboard}?page=2 (갯수 5개씩)
+* (post) 댓글 등록
+* (get) /{iboard}?page=2 (갯수 5개씩)
 (put) 수정
-(delete) 삭제
+(delete) /board/cmt/{iboardCmt}?iuser=10 삭제

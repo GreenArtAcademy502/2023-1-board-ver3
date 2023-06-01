@@ -1,9 +1,10 @@
 package com.green.boardver3.cmt;
 
-import com.green.boardver3.cmt.model.CmtEntity;
-import com.green.boardver3.cmt.model.CmtInsDto;
+import com.green.boardver3.cmt.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CmtService {
@@ -15,11 +16,7 @@ public class CmtService {
         this.mapper = mapper;
     }
 
-    int insBoardCmt(CmtInsDto dto) {
-        CmtEntity entity = new CmtEntity();
-        entity.setIboard(dto.getIboard());
-        entity.setIuser(dto.getIuser());
-        entity.setCtnt(dto.getCtnt());
+    int insBoardCmt(CmtEntity entity) {
         try {
             int result = mapper.insBoardCmt(entity);
             if (result == 1) {
@@ -29,5 +26,15 @@ public class CmtService {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public List<CmtVo> selBoardCmt(CmtSelDto dto) {
+        int startIdx = (dto.getPage() - 1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+        return mapper.selBoardCmt(dto);
+    }
+
+    public int delBoardCmt(CmtDelDto dto) {
+        return mapper.delBoardCmt(dto);
     }
 }
