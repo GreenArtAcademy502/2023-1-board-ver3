@@ -21,6 +21,14 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <update id="updBoardCmt">
+        UPDATE t_board_cmt
+        SET ctnt = #{ctnt}
+        , updated_at = current_timestamp()
+        WHERE iboard_cmt = #{iboardCmt}
+        AND iuser = #{iuser}
+    </update>
+
     <delete id="delBoardCmt">
         DELETE FROM t_board_cmt
         WHERE iboard_cmt = #{iboardCmt}
