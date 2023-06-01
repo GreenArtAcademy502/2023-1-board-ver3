@@ -34,7 +34,7 @@ public class BoardService {
     }
 
     public int selBoardMaxPage(int row) {
-        int count = mapper.selBoardRowCount(row);
+        int count = mapper.selBoardRowCount();
         return (int)Math.ceil((double)count / row);
     }
 
