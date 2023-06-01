@@ -21,6 +21,11 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selBoardCmtRowCountByIBoard">
+        SELECT count(iboard_cmt) FROM t_board_cmt
+        WHERE iboard = #{iboard}
+    </select>
+
     <update id="updBoardCmt">
         UPDATE t_board_cmt
         SET ctnt = #{ctnt}

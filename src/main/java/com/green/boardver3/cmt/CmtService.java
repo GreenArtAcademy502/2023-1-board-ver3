@@ -28,10 +28,21 @@ public class CmtService {
         return 0;
     }
 
-    public List<CmtVo> selBoardCmt(CmtSelDto dto) {
+    public CmtRes selBoardCmt(CmtSelDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);
-        return mapper.selBoardCmt(dto);
+        List<CmtVo> list = mapper.selBoardCmt(dto);
+
+        int rowCnt = mapper.selBoardCmtRowCountByIBoard(dto.getIboard());
+        int maxPage = (int)Math.ceil((double)rowCnt / dto.getRow());
+        int isMore = maxPage > dto.getPage() ? 1 : 0;
+
+        return CmtRes.builder()
+                    .list(list)
+                    .isMore(isMore)
+                    .maxPage(maxPage)
+                    .row(dto.getRow())
+                    .build();
     }
 
     public int updBoardCmt(CmtEntity entity) {

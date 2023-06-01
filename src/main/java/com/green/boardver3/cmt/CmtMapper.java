@@ -12,6 +12,7 @@ import java.util.List;
 public interface CmtMapper {
     int insBoardCmt(CmtEntity entity);
     List<CmtVo> selBoardCmt(CmtSelDto dto);
+    int selBoardCmtRowCountByIBoard(int iboard);
     int updBoardCmt(CmtEntity entity);
     int delBoardCmt(CmtDelDto dto);
 }

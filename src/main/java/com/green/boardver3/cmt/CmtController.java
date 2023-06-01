@@ -29,7 +29,7 @@ public class CmtController {
     }
 
     @GetMapping("/{iboard}/cmt")
-    public List<CmtVo> getBoardCmt(@PathVariable int iboard
+    public CmtRes getBoardCmt(@PathVariable int iboard
                                  , @RequestParam int page
                                  , @RequestParam(defaultValue = "5") int row) {
         CmtSelDto dto = new CmtSelDto();
