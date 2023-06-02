@@ -14,7 +14,7 @@
 /board
 * (get) /maxpage?row=40 마지막 page값
 * (get) ?page=1&row=40 리스트
-@ (get) /{iboard} 디테일 (댓글5, 댓글 maxpage값)
+* (get) /{iboard} 디테일 (댓글5, 댓글 maxpage값)
 * (post) 글등록
 * (put) 글수정 { title, ctnt, iboard, iuser }
 * (delete) 글삭제 { iboard, iuser }
