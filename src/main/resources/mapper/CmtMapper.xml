@@ -36,8 +36,15 @@
 
     <delete id="delBoardCmt">
         DELETE FROM t_board_cmt
-        WHERE iboard_cmt = #{iboardCmt}
-        AND iuser = #{iuser}
+        WHERE
+        <if test="iboardCmt > 0 and iuser > 0">
+            iboard_cmt = #{iboardCmt}
+            AND iuser = #{iuser}
+        </if>
+        <if test="iboard > 0">
+            iboard = #{iboard}
+        </if>
+
     </delete>
 
 </mapper>

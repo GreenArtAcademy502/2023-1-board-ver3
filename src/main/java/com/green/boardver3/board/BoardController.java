@@ -51,7 +51,7 @@ public class BoardController {
     }
 
     @DeleteMapping
-    public int delBoard(@RequestBody BoardDelDto dto) {
+    public int delBoard(@RequestBody BoardDelDto dto) throws Exception {
         return service.delBoard(dto);
     }
 }
