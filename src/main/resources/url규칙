@@ -17,7 +17,7 @@
 @ (get) /{iboard} 디테일 (댓글5, 댓글 maxpage값)
 * (post) 글등록
 * (put) 글수정 { title, ctnt, iboard, iuser }
-@ (delete) 글삭제 { iboard, iuser }
+* (delete) 글삭제 { iboard, iuser }
 
 /board/cmt
 * (post) 댓글 등록
