@@ -11,18 +11,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 
 @Service
+
 public class UserService {
 
     private final UserMapper mapper;
     private final CommonUtils commonUtils;
-
-    @Value("${file.dir}")
-    private String fileDir;
+    private final String FILE_DIR;
 
     @Autowired
-    public UserService(UserMapper mapper, CommonUtils commonUtils) {
+    public UserService(UserMapper mapper, CommonUtils commonUtils, @Value("${file.dir}") String fileDir) {
         this.mapper = mapper;
         this.commonUtils = commonUtils;
+        this.FILE_DIR = fileDir;
     }
 
     public int insUser(UserInsDto dto) {
@@ -65,7 +65,7 @@ public class UserService {
         // user/pk/uuid.jpg
         // user/1/abcd.jpg
         String centerPath = String.format("user/%d", dto.getIuser());
-        String dicPath = String.format("%s/%s", fileDir, centerPath);
+        String dicPath = String.format("%s/%s", FILE_DIR, centerPath);
 
         File dic = new File(dicPath);
         if(!dic.exists()) {
@@ -75,7 +75,7 @@ public class UserService {
         String originFileName = pic.getOriginalFilename();
         String savedFileName = FileUtils.makeRandomFileNm(originFileName);
         String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
-        String targetPath = String.format("%s/%s", fileDir, savedFilePath);
+        String targetPath = String.format("%s/%s", FILE_DIR, savedFilePath);
         File target = new File(targetPath);
         try {
             pic.transferTo(target);

@@ -49,7 +49,7 @@ public class UserController {
         return service.updUserPw(dto);
     }
 
-    @PatchMapping(name="/pic", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @PatchMapping(name ="/pic", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public int patchPicUser(@RequestPart MultipartFile pic, @RequestParam int iuser) {
         UserPatchPicDto dto = new UserPatchPicDto();
         dto.setIuser(iuser);

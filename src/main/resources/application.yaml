@@ -1,16 +1,16 @@
-# db config
+# default
 spring:
   servlet:
     multipart:
       max-file-size: 3MB
       max-request-size: 12MB
-  mvc:
-    static-path-pattern: /static/**
+
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    username: root
-    password: green502
-    jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_z
+   driver-class-name: org.mariadb.jdbc.Driver
+   username: root
+   password: green502
+   jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_z
+
 
 # mybatis config
 mybatis:
@@ -23,4 +23,22 @@ springdoc:
     path: /swagger.html
 
 file:
-  dir: D:/download/board3
+  dir: /home/download
+
+---
+# 도커 실행 시 다운로드 위치
+
+---
+# test 전용 환경
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mariadb://192.168.0.144:3306/team_z_test
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:init/schema.sql
+      data-locations: classpath:init/data.sql
+

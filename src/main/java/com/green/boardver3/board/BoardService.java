@@ -1,7 +1,6 @@
 package com.green.boardver3.board;
 
 import com.green.boardver3.board.model.*;
-import com.green.boardver3.cmt.CmtMapper;
 import com.green.boardver3.cmt.CmtService;
 import com.green.boardver3.cmt.model.CmtDelDto;
 import com.green.boardver3.cmt.model.CmtRes;
@@ -16,6 +15,8 @@ import java.util.List;
 public class BoardService {
     private final BoardMapper mapper;
     private final CmtService cmtService;
+
+
 
     @Autowired
     public BoardService(BoardMapper mapper, CmtService cmtService) {

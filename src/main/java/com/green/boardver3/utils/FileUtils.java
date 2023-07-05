@@ -3,6 +3,7 @@ package com.green.boardver3.utils;
 import java.util.UUID;
 
 public class FileUtils {
+
     //확장자 리턴하는 메소드
     public static String getExt(String fileNm) { // abcd.123.hhh.jpg
         return fileNm.substring(fileNm.lastIndexOf(".") + 1);
